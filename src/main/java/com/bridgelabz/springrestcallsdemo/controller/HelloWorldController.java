@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.bridgelabz.springrestcallsdemo.model.User;
+
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -27,9 +30,17 @@ public class HelloWorldController
     {
         return "Hello "+name+"!";
     }
+    	
     @GetMapping("/param/{name}")
     public String sayHelloParam(@PathVariable String name)
     {
         return "Hello "+name+"!";
+    }
+    
+    @PostMapping("/post")
+    public String sayHello(@RequestBody User user)
+    {
+
+        return "Hello "+user.getFirstName()+" "+user.getLastName();
     }
 }
